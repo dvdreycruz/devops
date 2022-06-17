@@ -19,12 +19,17 @@ Me encanta la bash!!
 Y _file2.txt_ debe permancer vacío
 
 ---
+---
 
+#### **Solución**
+~~~
+mkdir -p foo/dummy
+mkdir -p foo/empty
+echo "Me encanta la bash" > foo/dummy/file1.txt
+touch foo/dummy/file2.txt
+~~~
 
-#### Solución
-Aquí vendra la solución al problema
-
-
+---
 ---
 ---
 #### **Ejercicio 2: Mediante comandos de bash, vuelca el contenido de file1.txt a file2.text y mueve file2.txt a la carpeta empty.**
@@ -40,10 +45,12 @@ Donde *file1.txt* y *file2.txt* deben contener el siguiente texto
 Me encanta la bash!!
 ~~~
 ---
-#### Solución
+#### **Solución**
 Aquí vendrá la solución del ejercicio2
-
-
+~~~
+cp foo/dummy/file1.txt foo/dummy/file2.txt
+mv foo/dummy/file2.txt foo/empty/file2.txt
+~~~
 ---
 ---
 
