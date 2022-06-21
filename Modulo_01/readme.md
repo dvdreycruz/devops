@@ -97,3 +97,35 @@ Una vez creado lo podemos invocar de la siguiente manera
 ### **Ejercicio 4 Opcional: Crea un script de bash que descargue el contenido de una página web a un fichero**
 Una vez descargado el fichero, que busque en el mismo una palabra dada (esta se pasará como parámetro) y muestre por pantalla el número de línea donde aparece
 #### **Solución**
+##Captura de parametros
+~~~
+#!/bin/bash
+
+#Captura de parametros
+URL="https://www.google.es"
+WORD="script"
+LINES="";
+
+if [[ $#<1 ]]; then
+  echo "Error: Nº de parámetros insuficientes";
+  exit 2;
+fi
+
+#Almaceno la URL
+if [[ $#>1 ]]; then
+  URL=$1
+fi
+
+#Almaceno la palabra a buscar
+if [[ $#>2 ]]; then
+  WORD=$2
+fi
+
+#Web a fichero
+curl -s $URL > web.html
+
+#Bucle buscando la palabra y mostrando solamente el número de la linea
+cat web.html | grep -na $WORD | while read line ; do
+   echo  $(echo $line| cut -d: -f1)
+done
+~~~
