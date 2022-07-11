@@ -47,7 +47,7 @@ Me encanta la bash!!
 #### **Solución**
 
 ~~~
-cp foo/dummy/file1.txt foo/dummy/file2.txt
+cat foo/dummy/file1.txt > foo/dummy/file2.txt
 mv foo/dummy/file2.txt foo/empty/file2.txt
 ~~~
 ---
@@ -75,7 +75,7 @@ create_initial_structure(){
   mkdir -p foo/empty
   echo $1 > foo/dummy/file1.txt
   touch foo/dummy/file2.txt
-  cp foo/dummy/file1.txt foo/dummy/file2.txt
+  cat foo/dummy/file1.txt > foo/dummy/file2.txt
   mv foo/dummy/file2.txt foo/empty/file2.txt
 }
 
@@ -111,14 +111,19 @@ if [[ $#<1 ]]; then
   exit 2;
 fi
 
-#Almaceno la URL
+#Almaceno la palabra a buscar
 if [[ $#>1 ]]; then
-  URL=$1
+  WORD=$1
 fi
 
-#Almaceno la palabra a buscar
+#Almaceno la URL
 if [[ $#>2 ]]; then
-  WORD=$2
+  URL=$2
+fi
+
+if [[ $#>2 ]]; then
+  echo "Error: Nº de parámetros erróneo";
+  exit 2;
 fi
 
 #Web a fichero
